@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAT Campus Care - Home</title>
+    <link rel="stylesheet" href="home.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="https://www.gat.ac.in"><img class="imgsize" src="./images/1702720255.jpeg" alt="GAT Logo"></a>
+                <div class="flex">
+                    <a href="https://www.gat.ac.in" style="text-decoration: none;">
+                        <p class="headname">GLOBAL ACADEMY OF TECHNOLOGY</p>
+                        <p class="headsub">Growing Ahead Of Time....</p>
+                        <p class="headfoot">Autonomous Institute, Affiliated To VTU</p>
+                    </a>
+                </div>
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="report_issue.html">Report Issue</a></li>
+                    <li><a href="my_issues.html">My Issues</a></li>
+                    <li><a href="profile.html">Profile</a></li>
+                    <li><a href="logout.html">Logout</a></li>
+                </ul>
+            </nav>
+            <div class="user-info">
+                <span>Welcome, [Username]</span>
+                <img src="user-profile.jpg" alt="Profile Picture" class="profile-pic">
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="welcome-banner">
+            <h1>Welcome to GAT Campus Care!</h1>
+            <p>Report and track maintenance issues on campus efficiently.</p>
+        </section>
+        
+        <section class="quick-actions">
+            <button onclick="location.href='report_issue.html'">Report a New Issue</button>
+            <button onclick="location.href='my_issues.html'">View My Issues</button>
+        </section>
+
+        <section class="reported-issues">
+            <h2>My Reported Issues</h2>
+            <table id="issues-table">
+                <thead>
+                    <tr>
+                        <th>Issue ID</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Status</th>
+                        <th>Image</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dynamically populate this table with user's reported issues -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2024 Global Academy of Technology. All rights reserved.</p>
+        <p><a href="contact.html">Contact Us</a> | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('/get_issues')
+                .then(response => response.json())
+                .then(data => {
+                    const issuesTableBody = document.querySelector('#issues-table tbody');
+                    data.forEach(issue => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${issue._id}</td>
+                            <td>${issue.title}</td>
+                            <td>${issue.description}</td>
+                            <td>${issue.status}</td>
+                            <td>${issue.image ? `<img src="/files/${issue.image}" alt="Issue Image" width="100">` : 'No image'}</td>
+                        `;
+                        issuesTableBody.appendChild(row);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching issues:', error);
+                });
+        });
+    </script>
+</body>
+</html>

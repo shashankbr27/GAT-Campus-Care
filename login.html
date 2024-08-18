@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAT Campus Care</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <header class="nav">
+        <div class="logo">
+            <a href="https://www.gat.ac.in"><img class="imgsize" src="images/1702720255.jpeg" alt="GAT Logo"></a>
+        </div>
+        <div class="flex">
+            <a href="https://www.gat.ac.in" style="text-decoration: none;">
+                <p class="headname">GLOBAL ACADEMY OF TECHNOLOGY</p>
+                <p class="headsub">Growing Ahead Of Time....</p>
+                <p class="headfoot">Autonomous Institute, Affiliated To VTU</p></a>
+        </div>
+        <div class="headright">
+            <img class="imgsize" src="images/images.png" alt="NAAC Logo">
+            <img class="imgsize" src="images/naac-A.jpg" alt="NAAC A Grade">
+        </div>
+    </header>
+    <br><br>
+    <div class="cont">
+        <div class="form sign-in">
+            <h2>Welcome to GAT Campus Care!</h2>
+            <form id="login-form">
+                <label>
+                    <span>USN</span>
+                    <input type="text" id="usn" />
+                </label>
+                <label>
+                    <span>Password</span>
+                    <input type="password" id="password" />
+                </label>
+                <button type="button" class="submit" onclick="login()">Sign In</button>
+                <p id="login-error" class="error-message"></p>
+            </form>
+        </div>
+        <div class="sub-cont">
+            <div class="img">
+                <div class="img__text m--up">
+                    <h3>Don't have an account? Please Sign up!</h3>
+                </div>
+                <div class="img__text m--in">
+                    <h3>If you already have an account, just sign in.</h3>
+                </div>
+                <div class="img__btn">
+                    <span class="m--up">Sign Up</span>
+                    <span class="m--in">Sign In</span>
+                </div>
+            </div>
+            <div class="form sign-up">
+                <h2>Create your Account</h2>
+                <form id="signup-form">
+                    <label>
+                        <span>Name</span>
+                        <input type="text" id="name" />
+                    </label>
+                    <label>
+                        <span>Email</span>
+                        <input type="email" id="email" />
+                    </label>
+                    <label>
+                        <span>USN</span>
+                        <input type="text" id="signup-usn" />
+                    </label>
+                    <label>
+                        <span>Password</span>
+                        <input type="password" id="signup-password" />
+                    </label>
+                    <button type="button" class="submit" onclick="signup()">Sign Up</button>
+                    <p id="signup-error" class="error-message"></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+</html>
